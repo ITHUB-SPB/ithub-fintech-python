@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Визитка</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5/themes.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body>
+  <nav class="navbar shadow-md">
+    <a class="btn btn-primary text-md" href="/">Визитка</a>
+    <a class="btn btn-ghost text-md" href="/about">Обо мне</a>
+    <a class="btn btn-ghost text-md" href="/contacts">Контакты</a>
+  </nav>
+
+  <h1>{% block title %} {% endblock %}</h1>
+</body>
+</html>
