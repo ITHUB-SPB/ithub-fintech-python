@@ -10,12 +10,18 @@
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
 <body>
-  <nav class="navbar shadow-md">
-    <a class="btn btn-primary text-md" href="/">Визитка</a>
-    <a class="btn btn-ghost text-md" href="/about">Обо мне</a>
-    <a class="btn btn-ghost text-md" href="/contacts">Контакты</a>
+  <nav class="navbar shadow-md gap-4">
+  {% with request.resolver_match.url_name as url_name %}
+    <a class="btn text-md {% if url_name == 'home' %}btn-primary{% endif %}" href="/">Визитка</a>
+    <a class="btn text-md {% if url_name == 'about' %}btn-primary{% endif %}" href="/about">Обо мне</a>
+    <a class="btn text-md {% if url_name == 'contacts' %}btn-primary{% endif %}" href="/contacts">Контакты</a>
+  {% endwith %}
   </nav>
 
   <h1>{% block title %} {% endblock %}</h1>
+
+  <main>
+      {% block content %} {% endblock %}
+  </main>
 </body>
 </html>

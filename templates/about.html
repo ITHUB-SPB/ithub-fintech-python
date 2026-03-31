@@ -1,5 +1,30 @@
 {% extends '_base.html' %}
+{% load static %}
 
 {% block title %}
 Обо мне
+{% endblock %}
+
+{% block content %}
+<p>Я учился в школе.</p>
+
+<img src="{% static 'Logo.png' %}">
+
+<ul class="list bg-base-100 rounded-box shadow-md w-50">
+    <li class="list-row">
+        <div class="text-4xl text-black font-thin tabular-nums">01</div>
+        <div class="list-col-grow">
+          <div class="text-black">Регби</div>
+          <div class="text-xs uppercase font-semibold opacity-60">Remaining Reason</div>
+        </div>
+    </li>
+        <li class="list-row">
+        <div class="text-4xl text-black font-thin tabular-nums">02</div>
+        <div class="list-col-grow">
+          <div class="text-black">Шлепанцы</div>
+          <div class="text-xs uppercase font-semibold opacity-60">Remaining Reason</div>
+        </div>
+    </li>
+</ul>
+
 {% endblock %}
