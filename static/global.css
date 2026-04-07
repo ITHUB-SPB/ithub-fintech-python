@@ -1,10 +1,12 @@
 body {
-    background-color: black;
-    color: white;
     min-height: 100dvh;
 }
 
 img {
     max-width: 50dvw;
     max-height: 30dvh;
+}
+
+nav {
+    justify-content: start;
 }
