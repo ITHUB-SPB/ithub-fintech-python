@@ -1,5 +1,18 @@
 {% extends '_base.html' %}
 
 {% block title %}
-Визитка
+Заявки
+{% endblock %}
+
+{% block content %}
+<form method="post" action="/create" class="w-82">
+    <textarea name="text" placeholder="Комментарий"></textarea>
+    <input type="tel" name="phone" placeholder="Телефон">
+    <input type="time" name="preferred_timing">
+    <select name="record_type">
+        {% for record_type in record_types %}
+        <option value="{{ record_type.id }}">{{ record_type.title }}</option>
+        {% endfor %}
+    </select>
+</form>
 {% endblock %}

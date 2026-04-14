@@ -10,4 +10,3 @@ class Record(models.Model):
     preferred_timing = models.TimeField()
     record_type = models.ForeignKey(RecordType, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
-
