@@ -1,0 +1,23 @@
+[
+  {
+    "model": "landing.recordtype",
+    "pk": 1,
+    "fields": {
+      "title": "Предложение"
+    }
+  },
+  {
+    "model": "landing.recordtype",
+    "pk": 2,
+    "fields": {
+      "title": "Замечение"
+    }
+  },
+  {
+    "model": "landing.recordtype",
+    "pk": 3,
+    "fields": {
+      "title": "Другое"
+    }
+  }
+]
