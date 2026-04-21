@@ -26,8 +26,12 @@
             <td>{{ record.created_at }}</td>
             <td>{{ record.preferred_timing }}</td>
             <td>
-                <button>Изменить</button>
-                <button>Удалить</button>
+                <a href="/edit/{{ record.id }}">Изменить</a>
+
+                <form method="post" action="/delete/{{ record.id }}">
+                    {% csrf_token %}
+                    <button type="submit">Удалить</button>
+                </form>
             </td>
         </tr>
         {% endfor %}

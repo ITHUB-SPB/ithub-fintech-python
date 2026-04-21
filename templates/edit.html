@@ -1,0 +1,25 @@
+{% extends '_base.html' %}
+
+{% block title %}
+Заявка №{{ record.id }}
+{% endblock %}
+
+{% block content %}
+
+<form method="post" action="/edit/{{ record.id }}" class="w-82">
+    {% csrf_token %}
+    <textarea name="text" placeholder="Комментарий">{{ record.text }}</textarea>
+    <input type="tel" name="phone" placeholder="Телефон" required value="{{ record.phone }}">
+    <input type="time" name="preferred_timing" required value="{{ record.preferred_timing }}">
+    <select name="record_type" required>
+        {% for record_type in record_types %}
+            {% if record_type == record.record_type %}
+            <option value="{{ record_type.id }}" selected>{{ record_type.title }}</option>
+            {% else %}
+            <option value="{{ record_type.id }}">{{ record_type.title }}</option>
+            {% endif %}
+        {% endfor %}
+    </select>
+    <button type="submit">Обновить</button>
+</form>
+{% endblock %}

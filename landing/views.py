@@ -21,7 +21,6 @@ def create_view(request):
     phone = request.POST.get('phone')
     preferred_timing = request.POST.get('preferred_timing')
     record_type_id = int(request.POST.get('record_type'))
-
     record_type = RecordType.objects.get(pk=record_type_id)
 
     Record(
@@ -32,6 +31,33 @@ def create_view(request):
     ).save()
 
     return redirect('/')
+
+
+def delete_view(request, id):
+    record = Record.objects.get(pk=id)
+    if not record:
+        return redirect('/')
+
+    record.delete()
+    return redirect('/')
+
+
+def edit_view(request, id):
+    record = Record.objects.get(pk=id)
+    if not record:
+        return redirect('/')
+
+    if request.POST:
+        record.text = request.POST.get('text')
+        record.phone = request.POST.get('phone')
+        record.preferred_timing = request.POST.get('preferred_timing')
+        record_type_id = int(request.POST.get('record_type'))
+        record.record_type = RecordType.objects.get(pk=record_type_id)
+        record.save()
+        return redirect('/')
+
+    record_types = RecordType.objects.all()
+    return render(request, 'edit.html', { "record": record, "record_types": record_types })
 
 
 def about_view(request):
