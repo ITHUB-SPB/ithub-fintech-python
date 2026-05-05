@@ -3,3 +3,14 @@
 {% block title %}
 Контакты
 {% endblock %}
+
+{% block content %}
+
+<form method="post" action="/contacts" class="w-1/2">
+    {% csrf_token %}
+    {{ form.as_div }}
+    <button type="submit">Создать</button>
+</form>
+
+{% endblock %}
+

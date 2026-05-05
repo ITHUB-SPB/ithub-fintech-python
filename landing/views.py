@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
-from .models import RecordType, Record
+from .models import RecordType, Record, Messages
+from .forms import ContactForm
 
 
 def home_view(request):
@@ -63,5 +64,26 @@ def edit_view(request, id):
 def about_view(request):
     return render(request, 'about.html')
 
+
 def contacts_view(request):
-    return render(request, 'contacts.html')
+    form = ContactForm()
+
+    if request.POST:
+        new_message = ContactForm(request.POST)
+
+        if new_message.is_valid():
+            Messages(
+                theme=new_message.cleaned_data["theme"],
+                message=new_message.cleaned_data["message"],
+                attachment=new_message.cleaned_data["attachment"]
+            ).save()
+
+            return redirect('/contacts')
+
+        return render(
+            request,
+            'contacts.html',
+            { "form": form, "error": "Неверно заполнены поля" }
+        )
+
+    return render(request, 'contacts.html', { "form": form })
